@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Workflow {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tasks       Task[]
+  runs        Run[]
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  name        String
+  type        String   // e.g., "LLM_CALL", "DATA_FETCH", "USER_INPUT"
+  config      Json     // Task specific configuration
+  workflowId  String
+  workflow    Workflow @relation(fields: [workflowId], references: [id])
+  order       Int
+  nextTaskId  String?
+}
+
+model Run {
+  id          String   @id @default(cuid())
+  workflowId  String
+  workflow    Workflow @relation(fields: [workflowId], references: [id])
+  status      String   // "PENDING", "RUNNING", "COMPLETED", "FAILED"
+  logs        Log[]
+  createdAt   DateTime @default(now())
+  finishedAt  DateTime?
+}
+
+model Log {
+  id        String   @id @default(cuid())
+  runId     String
+  run       Run      @relation(fields: [runId], references: [id])
+  message   String
+  level     String   // "INFO", "WARN", "ERROR"
+  timestamp DateTime @default(now())
+}
