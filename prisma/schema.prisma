@@ -26,6 +26,7 @@ model Task {
   workflow    Workflow @relation(fields: [workflowId], references: [id])
   order       Int
   nextTaskId  String?
+  dependsOn   String?  // ID of the task this task depends on
 }
 
 model Run {
