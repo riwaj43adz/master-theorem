@@ -9,6 +9,9 @@ export class CodeAnalyzer {
       'Check for missing error handling in async functions',
       'Identify hardcoded secrets or sensitive information',
       'Verify that business logic is not in the view layer',
+      'Check for dangerous eval() or Function() calls',
+      'Identify potential SQL injection in raw queries',
+      'Verify secure handling of environment variables',
     ];
   }
 
