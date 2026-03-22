@@ -59,13 +59,26 @@ export class WorkflowRunner {
   }
 
   private async executeTask(task: any): Promise<TaskResult> {
-    // Simulated task execution
-    // In a real scenario, this would call LLMs, fetch data, etc.
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({ success: true, data: { status: 'ok' } });
-      }, 1000);
-    });
+    const maxRetries = task.config?.maxRetries || 3;
+    const delay = task.config?.retryDelay || 1000;
+
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        // Simulated task execution
+        return await new Promise((resolve, reject) => {
+          setTimeout(() => {
+            // Simulate 20% failure rate for testing retries
+            if (Math.random() < 0.2) reject(new Error('Transient failure'));
+            else resolve({ success: true, data: { status: 'ok', attempt } });
+          }, 500);
+        });
+      } catch (error: any) {
+        await this.log('WARN', `Attempt ${attempt} failed for task ${task.name}: ${error.message}`);
+        if (attempt === maxRetries) return { success: false, error: error.message };
+        await new Promise(r => setTimeout(r, delay * attempt)); // Exponential backoff simulation
+      }
+    }
+    return { success: false, error: 'Unknown error' };
   }
 
   private async log(level: string, message: string) {
