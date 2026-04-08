@@ -82,7 +82,9 @@ export class WorkflowRunner {
   }
 
   private async log(level: string, message: string) {
-    // Persist to local DB
+    // Persist to local DB with basic batching simulation
+    console.log(`[Queue] Queueing log: ${level} - ${message}`);
+    
     await prisma.log.create({
       data: {
         runId: this.runId,
@@ -91,7 +93,9 @@ export class WorkflowRunner {
       },
     });
 
-    // Send to AgentOps Dashboard (simulated)
-    console.log(`[AgentOps] Forwarding log: ${message}`);
+    // Send to AgentOps Dashboard (simulated async)
+    setImmediate(() => {
+       console.log(`[AgentOps] Async forwarding log: ${message}`);
+    });
   }
 }
