@@ -69,6 +69,7 @@ export class WorkflowRunner {
   }
 
   private async log(level: string, message: string) {
+    // Persist to local DB
     await prisma.log.create({
       data: {
         runId: this.runId,
@@ -76,5 +77,8 @@ export class WorkflowRunner {
         message,
       },
     });
+
+    // Send to AgentOps Dashboard (simulated)
+    console.log(`[AgentOps] Forwarding log: ${message}`);
   }
 }
