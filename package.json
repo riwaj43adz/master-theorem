@@ -3,9 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://riwaj43adz.github.io/master-theorem",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "deploy": "npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
