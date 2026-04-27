@@ -12,14 +12,11 @@
   }
 
   body {
-    @apply bg-background text-neutral-100 font-sans antialiased overflow-hidden;
-    @apply selection:bg-primary/30 selection:text-white;
+    @apply bg-background text-text-main font-sans antialiased overflow-hidden;
+    @apply selection:bg-primary/20 selection:text-primary;
     background-image:
-      radial-gradient(ellipse at 20% 0%, rgba(99,102,241,0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 100%, rgba(168,85,247,0.04) 0%, transparent 50%),
-      linear-gradient(rgba(99,102,241,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99,102,241,0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      radial-gradient(circle at 0% 0%, rgba(79,70,229,0.03) 0%, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(124,58,237,0.02) 0%, transparent 40%);
   }
 
   code, pre, .font-mono {
@@ -29,16 +26,15 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-surface/80 backdrop-blur-xl border border-white/[0.06] shadow-2xl;
-    @apply shadow-black/40;
+    @apply bg-white border border-slate-200/60 shadow-premium;
   }
 
   .glass-panel-alt {
-    @apply bg-surfaceAlt/60 backdrop-blur-lg border border-white/[0.04];
+    @apply bg-slate-50 border border-slate-200/40;
   }
 
   .label-micro {
-    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-white/30;
+    @apply text-[10px] font-black uppercase tracking-[0.2em] text-text-muted;
   }
 
   .value-display {
@@ -47,62 +43,61 @@
 
   .btn-ghost {
     @apply px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-[0.15em];
-    @apply bg-white/[0.03] border border-white/[0.06] text-white/50;
-    @apply hover:bg-white/[0.08] hover:border-white/[0.12] hover:text-white/90;
+    @apply bg-slate-100 border border-slate-200 text-text-sub;
+    @apply hover:bg-slate-200 hover:text-text-main;
     @apply transition-all duration-300 cursor-pointer;
   }
 }
 
-/* Glow filters for SVG */
-.glow-root { filter: drop-shadow(0 0 12px rgba(244, 63, 94, 0.7)); }
-.glow-middle { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.7)); }
-.glow-leaves { filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.7)); }
-.glow-primary { filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.5)); }
+/* Glow filters for SVG - softer for light mode */
+.glow-root { filter: drop-shadow(0 0 8px rgba(225, 29, 72, 0.3)); }
+.glow-middle { filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.3)); }
+.glow-leaves { filter: drop-shadow(0 0 8px rgba(5, 150, 105, 0.3)); }
+.glow-primary { filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.2)); }
 
 /* Range input */
 input[type='range'] {
-  @apply appearance-none bg-white/[0.06] rounded-full h-1.5 cursor-pointer w-full;
+  @apply appearance-none bg-slate-200 rounded-full h-1.5 cursor-pointer w-full;
   @apply focus:outline-none;
 }
 
 input[type='range']::-webkit-slider-thumb {
-  @apply appearance-none w-4 h-4 rounded-full bg-white border-2 border-primary;
-  @apply shadow-[0_0_12px_rgba(99,102,241,0.5)] transition-all duration-200;
+  @apply appearance-none w-5 h-5 rounded-full bg-white border-2 border-primary;
+  @apply shadow-lg transition-all duration-200;
 }
 
 input[type='range']::-webkit-slider-thumb:hover {
-  @apply scale-125 shadow-[0_0_20px_rgba(99,102,241,0.7)];
+  @apply scale-110 shadow-xl;
 }
 
 input[type='range']::-moz-range-thumb {
-  @apply w-4 h-4 rounded-full bg-white border-2 border-primary;
-  @apply shadow-[0_0_12px_rgba(99,102,241,0.5)] cursor-pointer;
-  border: 2px solid #6366f1;
+  @apply w-5 h-5 rounded-full bg-white border-2 border-primary;
+  @apply shadow-lg cursor-pointer;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   @apply bg-transparent;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full;
+  @apply bg-slate-300 rounded-full;
 }
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-white/20;
+  @apply bg-slate-400;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-primary/30 rounded-full;
+  @apply bg-primary/20 rounded-full;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  @apply bg-white/[0.02] rounded-full;
+  @apply bg-slate-100 rounded-full;
 }
 
 /* Tooltip and misc */
-.text-glow-root { text-shadow: 0 0 20px rgba(244, 63, 94, 0.5); }
-.text-glow-middle { text-shadow: 0 0 20px rgba(245, 158, 11, 0.5); }
-.text-glow-leaves { text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
-.text-glow-primary { text-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+.text-glow-root { text-shadow: 0 0 10px rgba(225, 29, 72, 0.2); }
+.text-glow-middle { text-shadow: 0 0 10px rgba(217, 119, 6, 0.2); }
+.text-glow-leaves { text-shadow: 0 0 10px rgba(5, 150, 105, 0.2); }
+.text-glow-primary { text-shadow: 0 0 10px rgba(79, 70, 229, 0.15); }
