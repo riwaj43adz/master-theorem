@@ -49,7 +49,7 @@ export type AnalysisResult = {
 
 export function analyzeCode(code: string): AnalysisResult {
   // Very basic heuristic analysis
-  const recursiveCallRegex = /solve\s*\(\s*n\s*\/\s*(\d+)\s*\)/g;
+  const recursiveCallRegex = /solve\s*\(\s*n\s*\/\s*(\d+)\s*\)|solve\s*\(\s*n\s*\/\s*b\s*\)/g;
   const matches = [...code.matchAll(recursiveCallRegex)];
   
   if (matches.length === 0) {

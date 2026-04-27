@@ -26,7 +26,7 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-white border border-slate-200/60 shadow-premium;
+    @apply bg-white border border-slate-200/60 shadow-xl;
   }
 
   .label-micro {
