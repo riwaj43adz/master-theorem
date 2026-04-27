@@ -39,7 +39,7 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-background text-text-main font-sans selection:bg-primary/10">
+    <div className="flex h-screen w-screen overflow-hidden bg-background text-slate-900 font-sans selection:bg-primary/10">
       {/* ─── SIDEBAR ─── */}
       <aside className="w-80 shrink-0 bg-white border-r border-slate-200 flex flex-col z-30 shadow-sm">
         {/* Brand */}

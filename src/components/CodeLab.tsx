@@ -100,7 +100,7 @@ const CodeLab: React.FC<CodeLabProps> = ({ a, b, fnId, onApplyRecurrence }) => {
             <textarea
               value={userCode}
               onChange={(e) => setUserCode(e.target.value)}
-              className="w-full h-full pt-14 pb-8 px-8 bg-white text-slate-700 font-mono text-sm resize-none focus:outline-none custom-scrollbar leading-relaxed"
+              className="w-full h-full pt-14 pb-8 px-8 bg-white text-indigo-900 font-mono text-sm resize-none focus:outline-none custom-scrollbar leading-relaxed"
               spellCheck={false}
             />
           </div>

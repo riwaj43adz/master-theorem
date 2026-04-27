@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply bg-background text-text-main font-sans antialiased overflow-hidden;
+    @apply bg-background text-slate-900 font-sans antialiased overflow-hidden;
     @apply selection:bg-primary/20 selection:text-primary;
     background-image:
       radial-gradient(circle at 0% 0%, rgba(79,70,229,0.03) 0%, transparent 40%),
@@ -29,31 +29,22 @@
     @apply bg-white border border-slate-200/60 shadow-premium;
   }
 
-  .glass-panel-alt {
-    @apply bg-slate-50 border border-slate-200/40;
-  }
-
   .label-micro {
-    @apply text-[10px] font-black uppercase tracking-[0.2em] text-text-muted;
-  }
-
-  .value-display {
-    @apply text-2xl font-black font-mono tabular-nums;
+    @apply text-[10px] font-black uppercase tracking-[0.2em] text-slate-400;
   }
 
   .btn-ghost {
     @apply px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-[0.15em];
-    @apply bg-slate-100 border border-slate-200 text-text-sub;
-    @apply hover:bg-slate-200 hover:text-text-main;
+    @apply bg-slate-100 border border-slate-200 text-slate-500;
+    @apply hover:bg-slate-200 hover:text-slate-900;
     @apply transition-all duration-300 cursor-pointer;
   }
 }
 
-/* Glow filters for SVG - softer for light mode */
-.glow-root { filter: drop-shadow(0 0 8px rgba(225, 29, 72, 0.3)); }
-.glow-middle { filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.3)); }
-.glow-leaves { filter: drop-shadow(0 0 8px rgba(5, 150, 105, 0.3)); }
-.glow-primary { filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.2)); }
+/* Glow filters for SVG */
+.glow-root { filter: drop-shadow(0 0 8px rgba(225, 29, 72, 0.2)); }
+.glow-middle { filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.2)); }
+.glow-leaves { filter: drop-shadow(0 0 8px rgba(5, 150, 105, 0.2)); }
 
 /* Range input */
 input[type='range'] {
@@ -68,11 +59,6 @@ input[type='range']::-webkit-slider-thumb {
 
 input[type='range']::-webkit-slider-thumb:hover {
   @apply scale-110 shadow-xl;
-}
-
-input[type='range']::-moz-range-thumb {
-  @apply w-5 h-5 rounded-full bg-white border-2 border-primary;
-  @apply shadow-lg cursor-pointer;
 }
 
 /* Scrollbar */
@@ -95,9 +81,3 @@ input[type='range']::-moz-range-thumb {
 .custom-scrollbar::-webkit-scrollbar-track {
   @apply bg-slate-100 rounded-full;
 }
-
-/* Tooltip and misc */
-.text-glow-root { text-shadow: 0 0 10px rgba(225, 29, 72, 0.2); }
-.text-glow-middle { text-shadow: 0 0 10px rgba(217, 119, 6, 0.2); }
-.text-glow-leaves { text-shadow: 0 0 10px rgba(5, 150, 105, 0.2); }
-.text-glow-primary { text-shadow: 0 0 10px rgba(79, 70, 229, 0.15); }
