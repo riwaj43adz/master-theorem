@@ -17,5 +17,40 @@ NexusFlow solves the reliability problem in multi-step agentic workflows. By pro
 - Prisma + PostgreSQL
 - Redis (Queue)
 
-## Status
-Work in Progress.
+## Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/riwaj43adz/nexus-flow.git
+   cd nexus-flow
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Database Configuration**
+   Create a `.env` file and add your PostgreSQL connection string:
+   ```env
+   DATABASE_URL="postgresql://user:password@localhost:5432/nexusflow"
+   ```
+
+4. **Initialize Database**
+   ```bash
+   npx prisma db push
+   ```
+
+5. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
+
+## Roadmap
+- [ ] Drag-and-drop workflow builder.
+- [ ] Support for local Ollama models.
+- [ ] Multi-agent collaborative modes.
+- [ ] Export to Python/LangGraph.
+
+## License
+MIT
